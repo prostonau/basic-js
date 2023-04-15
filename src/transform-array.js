@@ -15,8 +15,11 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function transform(a) {
 
-  if (!Array.isArray(a)) return "'arr' parameter must be an instance of the Array!"
+  if (!Array.isArray(a)) throw new NotImplementedError("'arr' parameter must be an instance of the Array!"); 
 
+  if (!a.includes('--discard-next') && !a.includes('--discard-prev') && !a.includes('--double-next') && !a.includes('--double-prev'))
+  return a
+ 
  
   console.log("a", a,typeof a)
   
@@ -49,7 +52,7 @@ function transform(a) {
       if (e == '--double-next') flag3 = true
       if (e == '--double-prev' && output.length > 0 && a[i-2] != '--discard-next') {
                                                                 console.log('tut2')
-                                                              output.push(output[output.length-1]) 
+                                                                output.push(output[output.length-1]) 
                                                                 }
       if (typeof e != 'string')  output.push(e)
     }
@@ -59,6 +62,8 @@ function transform(a) {
    console.log("output", output)
    ++i; 
   }
+
+  console.log("a", a,typeof a)
 
   return  output.filter(function(val){ return val!==undefined; });
 

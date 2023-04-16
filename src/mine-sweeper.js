@@ -23,10 +23,34 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+function minesweeper(matrix) {
+
+    let outM = []
+    let output = 0
+      
+      for (let y = 0; y < matrix.length; y++) {
+        //console.log("matrix[y] = ", matrix[y])
+        outM.push( [] );
+        for (let x = 0; x < matrix[y].length; x++) {
+          //console.log(matrix[y][x])
+          let count = 0 
+          if (matrix[y][x] == true)  {count = 0; outM[x].push(1); continue;}  
+    
+          if(x>0) {if (matrix[y][x-1] == true) ++count;}
+          if(x <= matrix[y].length) {if (matrix[y][x+1] == true) ++count;}
+          if(y>0 && x>0) {if (matrix[y-1][x-1] == true) ++count;}
+          if(y>0 && x+1 <= matrix[y].length ) {if (matrix[y-1][x+1] == true) ++count;}
+          if(x>0 && matrix[y+1]) {if (matrix[y+1][x-1] == true) ++count;}
+          if(x <= matrix[y].length && matrix[y+1]) {if (matrix[y+1][x+1] == true) ++count;}
+          if(matrix[y-1]) {if (matrix[y-1][x] == true) ++count;}
+          if(matrix[y+1]) {if (matrix[y+1][x] == true) ++count;}
+          outM[y].push(count)     
+        }
+      }
+    
+      return outM
+    
+    }
 
 module.exports = {
   minesweeper

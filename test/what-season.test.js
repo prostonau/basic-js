@@ -190,10 +190,10 @@ describe('What season', () => {
     describe('extended requirements ', () => {
         it.optional('throws an error with message "Invalid date!" on invalid argument', function () {
             const res = checkForThrowingErrors.call(this, [
-               // () => getSeason('foo'),
+                () => getSeason('foo'),
                 () => getSeason({ John: 'Smith' }),
-                // () => getSeason(20192701),
-                // () => getSeason([2019, '27', 0 + '1']),
+                () => getSeason(20192701),
+                () => getSeason([2019, '27', 0 + '1']),
                 // () => getSeason(() => new Date())
             ], 'Invalid date!');
 

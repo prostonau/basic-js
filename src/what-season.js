@@ -13,22 +13,10 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSeason(a) {
 
-  // console.log("a", a,typeof a)
-  // console.log(a)
-
-  //console.log(Object.keys(a).length)
-
-//   try {
-//     throw 'myException'; // создание исключения
-//  }
-
-//  catch (e) {
-//   // инструкции для обработки ошибок
-//   logMyErrors(e); // передать объект исключения обработчику ошибок
-// }
-
-
-//   if (a == { John: 'Smith' })  throw new Error("Invalid date!"); 
+  if (arguments.length == 0)  return 'Unable to determine the time of year!'
+  if (!(a instanceof Date))  throw new Error("Invalid date!"); 
+  if (a.hasOwnProperty('toString')) throw new Error("Invalid date!"); 
+  
 
 
  
